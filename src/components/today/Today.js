@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux';
 
 import {
     Container,
@@ -9,19 +10,24 @@ import {
 
 } from './today.styles';
 
-const Today = () => {
+const Today = ({selectedDay, location}) => {
+
+    // const day = list[selectedDay]
+    console.log( selectedDay )
     return (
+        selectedDay && location ? 
         <Container>
             <Header>
-                <h1>Temperley Buenos Aires</h1>
-                <h3>viernes</h3>
-                <h3>Soleado</h3>
+                <h1>{location.city} {location.regionName}</h1>
+                <h3>{selectedDay.dayName}</h3>
+                <h3>{selectedDay.description}</h3>
             </Header>
             <Info>
                 <Temperature>
-                    <h1> sol </h1>
-                    <h1>29º</h1>
-                    <p>c | f</p>
+                    <h1> {selectedDay.iconWeather} </h1>
+                    <img src={selectedDay.iconWeatherSrc} alt="icon"/>
+                    <h1> {selectedDay.temp} </h1>
+                    <p>ºc </p>
                 </Temperature>
                 <Data>
                     <h3>Presipitaciones</h3>
@@ -31,7 +37,22 @@ const Today = () => {
             </Info>
 
         </Container>
+
+        :
+        <h1>Loading</h1>
+
     )
 }
 
-export default Today;
+
+const mapStateToProps = (state) => {
+    return {location: state.daysStore.location,
+            selectedDay: state.day.selectedDay,
+    };
+};
+
+
+
+export default connect(
+  mapStateToProps
+)(Today);

@@ -1,4 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { connect } from 'react-redux';
+
+import { fetchLocationStart } from '../../redux/days-list/days-list.actions';
 
 import {
     Container,
@@ -6,20 +9,42 @@ import {
 } from './days-list.styles';
 
 import Day from '../day/Day';
-const list = ["hoy",1,2,3,4,5]
 
-const DaysList = () => {
+
+const DaysList = ({fetchLocationStart, list}) => {
+
+    useEffect(() => {
+        fetchLocationStart();
+      }, [fetchLocationStart])
+
+
     return (
         <Container>
             {
-                list.map((day) => {
+                list ?  
+                list.map((day , index) => {
                     return (
-                        <Day data={day}/>
+                        <Day key={index} day={day} />
                     )
                 })
+                : 
+                <>
+                </>
             }
         </Container>
     )
 }
 
-export default DaysList;
+const mapStateToProps = (state) => {
+    return { list: state.daysStore.days,
+    };
+};
+
+const mapDispatchToProps = dispatch => ({
+    fetchLocationStart: () => dispatch(fetchLocationStart())
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(DaysList);
