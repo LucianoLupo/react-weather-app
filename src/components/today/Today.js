@@ -24,7 +24,6 @@ const Today = ({selectedDay, location}) => {
             </Header>
             <Info>
                 <Temperature>
-                    <h1> {selectedDay.iconWeather} </h1>
                     <img src={selectedDay.iconWeatherSrc} alt="icon"/>
                     <h1> {selectedDay.temp} </h1>
                     <p>ºc </p>
