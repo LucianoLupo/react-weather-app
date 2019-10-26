@@ -7,8 +7,7 @@ import {
     Temperature,
     TemperatureData,
     Data,
-    Info,
-
+    Info
 } from './today.styles';
 
 const Today = ({selectedDay, location}) => {
@@ -36,13 +35,15 @@ const Today = ({selectedDay, location}) => {
             </Info>
         </Container>
         :
-        <h1>Loading...</h1>
+        <Container>
+            <h1>Loading...</h1>
+        </Container>
     )
 }
 
 const mapStateToProps = (state) => {
     return {location: state.daysStore.location,
-            selectedDay: state.day.selectedDay,
+            selectedDay: state.selectedDay,
     };
 };
 

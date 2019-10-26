@@ -3,17 +3,13 @@ import axios from 'axios';
 import { fetchLocationSuccess, fetchLocationFailure, fetchWeatherSuccess, fetchWeatherFailure, fetchWeatherStart as fetchWeatherStartCall } from './days-list.actions';
 import { selectDay } from '../day/day.actions';
 import { returnListOfDays } from './days-list.utils'; 
-
-import {location, weather, nextFiveDays} from './mocks';
 import DayActionTypes from './days-list.types';
 
 
 export function* fetchLocationAsync( {payload} ){
-
     try {
         const data = yield axios.get('http://ip-api.com/json/');
         let coords;
-
         if ( !payload || !payload.lat || !payload.lon ){    
             coords = {
                 lat:data.data.lat,
@@ -22,18 +18,12 @@ export function* fetchLocationAsync( {payload} ){
         } else {
             coords = payload
         }
-
         yield put(fetchLocationSuccess(data.data));
         yield put(fetchWeatherStartCall(coords))
 
     } catch (error) {
         yield put(fetchLocationFailure(error.message));
     }
-
-    // const getData = () => axios.get('http://ip-api.com/json/').then((res) => {
-    //     console.log(res.data)
-    //   }).catch(error => dispatch(fetchLocationFailure(error.message)))
-    // getData()
 }
 
 export function* fetchLocationStart() {
@@ -50,38 +40,21 @@ export function* fetchWeatherStart() {
     );
 }
 
-
-
-
 export function* fetchWeatherAsync({payload}){
-    console.log("weather call",payload)
 
     const coords = payload
-
     const apiKey ='e0842dbfe9f0e14cbc05dbde911d7bf7';
+
     try {
-
         const nextFiveDays = yield axios.get(`http://api.openweathermap.org/data/2.5/forecast?lat=${coords.lat}&lon=${coords.lon}&appid=${apiKey}`);
-        console.log(nextFiveDays)
-
         let cleanedList = returnListOfDays(nextFiveDays.data)
 
         yield put(fetchWeatherSuccess(cleanedList));
         yield put(selectDay(cleanedList[0]));
-
-
-        
     } catch (error) {
         yield put(fetchWeatherFailure(error.message));
     }
-
-    // const getData = () => axios.get('http://ip-api.com/json/').then((res) => {
-    //     console.log(res.data)
-    //   }).catch(error => dispatch(fetchLocationFailure(error.message)))
-    // getData()
 }
-
-
 
 
 export function* listSagas() {

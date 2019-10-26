@@ -1,33 +1,35 @@
 import React from 'react';
 import './App.css';
 import { connect } from 'react-redux';
-import { Container } from './app.styles';
+import { Container, AppContainer } from './app.styles';
 import axios from 'axios';
 import Today from './components/today/Today';
 import DaysList from './components/days-list/DaysList';
-import CitiesList from './components/cities/CitiesList'
-const App = () => {
+import CitiesList from './components/cities/CitiesList';
+import Modal from './components/modal/Modal'
 
-  // const getData = () => axios.get('http://ip-api.com/json/').then((res) => {
-  //   console.log(res.data)
-  // })
-
-  // const getDataAsync = async () => {
-  //   const data = await axios.get('http://ip-api.com/json/')
-  //   console.log(data)
-  //   return data
-  // }
-
-  // getData();
-  // getDataAsync();
+const App = ({ isFetchingWeather }) => {
+  const isFetching = isFetchingWeather  
 
   return (
-    <Container>
-      <Today/>
-      <DaysList/>
-      <CitiesList/>
-    </Container>
+    <AppContainer>
+      <Container>
+        <Today/>
+        <DaysList/>
+        <CitiesList/>
+        <Modal open={isFetching}/>
+      </Container>
+    </AppContainer>
+
   );
 }
 
-export default App;
+
+const mapStateToProps = (state) => {
+  return { isFetchingWeather: state.daysStore.isFetchingWeather
+  };
+};
+
+export default connect(
+mapStateToProps
+)(App);

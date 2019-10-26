@@ -24,17 +24,11 @@ const Day = ({day, selectDay}) => {
     )
 }
 
-
-const mapStateToProps = (state) => {
-    return { list: state.daysStore.days,
-    };
-};
-
 const mapDispatchToProps = dispatch => ({
     selectDay: (day) => dispatch(selectDay(day))
 });
 
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(Day);

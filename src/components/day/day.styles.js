@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { textColor, backgroundColor, primaryColor, secondaryBackgroundGradient } from '../../stylesVariables'
+import { textColor, secondaryBackgroundGradient } from '../../stylesVariables'
 
 export const Container = styled.div`
   cursor:pointer;

@@ -5,7 +5,7 @@ import daysListReducer from './days-list/days-list.reducer';
 
 
 const rootReducer = combineReducers({
-  day: dayReducer,
+  selectedDay: dayReducer,
   daysStore: daysListReducer,
 
 });

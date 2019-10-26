@@ -2,9 +2,8 @@
 
 import DayActionTypes from './day.types';
 
-
 const INITIAL_STATE = {
-  selectedDay:null,
+  
 };
 
 const dayReducer = (state = INITIAL_STATE, action) => {
@@ -12,7 +11,7 @@ const dayReducer = (state = INITIAL_STATE, action) => {
     case DayActionTypes.SELECT_DAY:
       return {
         ...state,
-        selectedDay:action.payload
+        ...action.payload
       };
     default:
       return state;

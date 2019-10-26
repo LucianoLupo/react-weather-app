@@ -25,3 +25,8 @@ background: -ms-linear-gradient(45deg, rgba(81,154,219,1) 0%, rgba(18,117,224,1)
 background: linear-gradient(45deg, rgba(81,154,219,1) 0%, rgba(18,117,224,1) 100%);
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#519adb', endColorstr='#1275e0', GradientType=1 );
 `
+export const boxShadow = `
+-webkit-box-shadow: -1px 3px 26px -9px rgba(0,0,0,0.75);
+-moz-box-shadow: -1px 3px 26px -9px rgba(0,0,0,0.75);
+box-shadow: -1px 3px 26px -9px rgba(0,0,0,0.75);
+`

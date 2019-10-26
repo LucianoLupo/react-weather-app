@@ -10,7 +10,7 @@ const INITIAL_STATE = {
   days:null
 };
 
-const dayReducer = (state = INITIAL_STATE, action) => {
+const dayListReducer = (state = INITIAL_STATE, action) => {
 
   switch (action.type) {
     case DayActionTypes.FETCH_LOCATION_START:
@@ -52,4 +52,4 @@ const dayReducer = (state = INITIAL_STATE, action) => {
   }
 };
 
-export default dayReducer;
+export default dayListReducer;
