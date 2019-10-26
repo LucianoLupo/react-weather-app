@@ -3,15 +3,23 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { selectDay } from '../../redux/day/day.actions';
-import { Container } from './day.styles';
+import { Container, MaxMinContainer, MaxMin } from './day.styles';
 
 const Day = ({day, selectDay}) => {
     return (
         <Container onClick={() => selectDay(day)}>
-            <p> {day.dayName} {day.dayId}</p>
+            <p> {day.dayName}</p>
             <img src={day.iconWeatherSrc} alt="icon"/>
-
-            <p>{day.max} / {day.min}</p>
+            <MaxMinContainer> 
+                <MaxMin>
+                    <p>max:</p>
+                    <h4>{day.max}</h4>
+                </MaxMin>
+                <MaxMin>
+                    <p>min:</p>
+                    <h4>{day.min}</h4>
+                </MaxMin>
+            </MaxMinContainer>
         </Container>
     )
 }

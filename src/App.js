@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import { connect } from 'react-redux';
-
+import { Container } from './app.styles';
 import axios from 'axios';
 import Today from './components/today/Today';
 import DaysList from './components/days-list/DaysList';
@@ -22,11 +22,11 @@ const App = () => {
   // getDataAsync();
 
   return (
-    <div>
+    <Container style={{width:'fit-content'}}>
       <Today/>
       <DaysList/>
       <CitiesList/>
-    </div>
+    </Container>
   );
 }
 

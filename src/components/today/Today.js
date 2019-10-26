@@ -5,6 +5,7 @@ import {
     Container,
     Header,
     Temperature,
+    TemperatureData,
     Data,
     Info,
 
@@ -23,8 +24,10 @@ const Today = ({selectedDay, location}) => {
             <Info>
                 <Temperature>
                     <img src={selectedDay.iconWeatherSrc} alt="icon"/>
-                    <h1> {selectedDay.temp} </h1>
-                    <p>ºc </p>
+                    <TemperatureData>
+                        <h1> {selectedDay.temp} </h1>
+                        <p>ºc </p>
+                    </TemperatureData>
                 </Temperature>
                 <Data>
                     <h3>Humidity: {selectedDay.humidity} %</h3>

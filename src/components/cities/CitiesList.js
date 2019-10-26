@@ -3,16 +3,12 @@ import { connect } from 'react-redux';
 
 import { fetchLocationStart } from '../../redux/days-list/days-list.actions';
 
-import {
-    Container,
-
-} from './cities-list.styles';
-
-import Day from '../day/Day';
+import{ Container } from './cities-list.styles';
 
 const list = [
     {
-        city: 'Actual City',
+        subCity: 'Actual City',
+        city:null,
         lat:null,
         lon:null,
     },
@@ -57,7 +53,15 @@ const CitiesList = ({fetchLocationStart}) => {
                 list.map((city, index) => {
                     return (
                         <div key={index} onClick={() => fetchLocationStart({lat:city.lat,lon:city.lon})}>
-                            <h4>{city.city}</h4>
+                            <h4>{city.subCity}</h4>
+                            {
+                                index != 0 ?
+                                <p>({city.city})</p>
+                                :
+                                <>
+                                </> 
+                            }
+                            
                         </div>
                     )
                 })
