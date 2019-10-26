@@ -12,8 +12,6 @@ import {
 
 const Today = ({selectedDay, location}) => {
 
-    // const day = list[selectedDay]
-    console.log( selectedDay )
     return (
         selectedDay && location ? 
         <Container>
@@ -29,28 +27,21 @@ const Today = ({selectedDay, location}) => {
                     <p>ºc </p>
                 </Temperature>
                 <Data>
-                    <h3>Presipitaciones</h3>
-                    <h3>Humedad</h3>
-                    <h3>Viento</h3>
+                    <h3>Humidity: {selectedDay.humidity} %</h3>
+                    <h3>Wind Speed: { selectedDay.windSpeed }  m/s </h3>
                 </Data>
             </Info>
-
         </Container>
-
         :
-        <h1>Loading</h1>
-
+        <h1>Loading...</h1>
     )
 }
-
 
 const mapStateToProps = (state) => {
     return {location: state.daysStore.location,
             selectedDay: state.day.selectedDay,
     };
 };
-
-
 
 export default connect(
   mapStateToProps

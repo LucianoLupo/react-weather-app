@@ -19,6 +19,8 @@ export function returnListOfDays(data) {
                 max:null,
                 hourOfDay:null,
                 description:null,
+                humidity:null,
+                pressure:null,
                 detailOnHours:[]
             }
             data.list.forEach((hourInfo) => {
@@ -40,6 +42,9 @@ export function returnListOfDays(data) {
                         day.iconWeather = detail.weather[0].icon
                         day.iconWeatherSrc = `http://openweathermap.org/img/wn/${detail.weather[0].icon}@2x.png`
                         day.description = detail.weather[0].description
+                        day.humidity = detail.main.humidity
+                        day.pressure = detail.main.pressure
+                        day.windSpeed = detail.wind.speed
                     }
 
                 })

@@ -19,8 +19,9 @@ export const fetchLocationFailure = errorMessage => ({
 
 
 
-export const fetchWeatherStart = () => ({
+export const fetchWeatherStart = (coords) => ({
   type: DaysListActionTypes.FETCH_WEATHER_START,
+  payload:coords
 
 });
 

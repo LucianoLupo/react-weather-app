@@ -6,21 +6,14 @@ import { returnListOfDays } from './days-list.utils';
 
 import {location, weather, nextFiveDays} from './mocks';
 import DayActionTypes from './days-list.types';
-import { from } from 'rxjs';
 
 
 export function* fetchLocationAsync( {payload} ){
 
-    console.log("coords",!payload) 
     try {
-        
-
         const data = yield axios.get('http://ip-api.com/json/');
         let coords;
 
-        // TODO sacar estos mocks
-        //const data = location
-        // let coords
         if ( !payload || !payload.lat || !payload.lon ){    
             coords = {
                 lat:data.data.lat,
@@ -30,12 +23,9 @@ export function* fetchLocationAsync( {payload} ){
             coords = payload
         }
 
-        console.log(coords)
-        // yield put(fetchLocationSuccess(data.data));
-        yield put(fetchLocationSuccess(data));
+        yield put(fetchLocationSuccess(data.data));
+        yield put(fetchWeatherStartCall(coords))
 
-        yield put(fetchWeatherStartCall())
-        yield fetchWeatherAsync(coords);
     } catch (error) {
         yield put(fetchLocationFailure(error.message));
     }
@@ -53,26 +43,29 @@ export function* fetchLocationStart() {
     );
 }
 
+export function* fetchWeatherStart() {
+    yield takeLatest(
+        DayActionTypes.FETCH_WEATHER_START,
+        fetchWeatherAsync
+    );
+}
 
 
 
-export function* fetchWeatherAsync(coords){
-    console.log("weather call",coords)
 
+export function* fetchWeatherAsync({payload}){
+    console.log("weather call",payload)
+
+    const coords = payload
 
     const apiKey ='e0842dbfe9f0e14cbc05dbde911d7bf7';
     try {
-        //TODO ojo este mock
-        // const data = yield axios.get(`http://api.openweathermap.org/data/2.5/weather?lat=${coords.lat}&lon=${coords.lon}&appid=${apiKey}`);
-        // yield put(fetchWeatherSuccess(data.data));
-        const currentWeather = weather
+
         const nextFiveDays = yield axios.get(`http://api.openweathermap.org/data/2.5/forecast?lat=${coords.lat}&lon=${coords.lon}&appid=${apiKey}`);
         console.log(nextFiveDays)
 
         let cleanedList = returnListOfDays(nextFiveDays.data)
-        console.log(cleanedList)
 
-        console.log(cleanedList)
         yield put(fetchWeatherSuccess(cleanedList));
         yield put(selectDay(cleanedList[0]));
 
@@ -92,5 +85,5 @@ export function* fetchWeatherAsync(coords){
 
 
 export function* listSagas() {
-    yield all([call(fetchLocationStart)])
+    yield all([call(fetchLocationStart),call(fetchWeatherStart)])
 }

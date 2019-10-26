@@ -2,21 +2,15 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux';
 
 import { fetchLocationStart } from '../../redux/days-list/days-list.actions';
-
-import {
-    Container,
-
-} from './days-list.styles';
+import { Container } from './days-list.styles';
 
 import Day from '../day/Day';
-
 
 const DaysList = ({fetchLocationStart, list}) => {
 
     useEffect(() => {
         fetchLocationStart();
       }, [fetchLocationStart])
-
 
     return (
         <Container>
@@ -29,6 +23,7 @@ const DaysList = ({fetchLocationStart, list}) => {
                 })
                 : 
                 <>
+                <h1>Loading...</h1>
                 </>
             }
         </Container>
