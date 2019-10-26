@@ -1,7 +1,8 @@
 import styled from 'styled-components';
-import { textColor, backgroundColor, primaryColor, backgroundGradient } from '../../stylesVariables'
+import { textColor, backgroundColor, primaryColor, secondaryBackgroundGradient } from '../../stylesVariables'
 
 export const Container = styled.div`
+  cursor:pointer;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -12,7 +13,7 @@ export const Container = styled.div`
   text-align:center;
   margin:5px;
   color:${textColor};
-  ${backgroundGradient}
+  ${secondaryBackgroundGradient}
 `;
 
 export const MaxMinContainer = styled.div`

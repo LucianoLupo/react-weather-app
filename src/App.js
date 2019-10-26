@@ -22,7 +22,7 @@ const App = () => {
   // getDataAsync();
 
   return (
-    <Container style={{width:'fit-content'}}>
+    <Container>
       <Today/>
       <DaysList/>
       <CitiesList/>

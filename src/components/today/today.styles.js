@@ -1,13 +1,11 @@
 import styled from 'styled-components';
 
-import { textColor, backgroundColor, primaryColor, backgroundGradient } from '../../stylesVariables'
+import { textColor, secondaryBackgroundGradient } from '../../stylesVariables'
 
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
   padding: 20px;
-  border: 1px solid black;
-  background-color: ${backgroundColor};
   color:${textColor}
 
 `;
@@ -16,9 +14,6 @@ export const Header = styled.div`
   display: flex;
   flex-direction: column;
   padding: 0;
-  border: 1px solid black;
-  background-color: ${backgroundColor};
-
   h1{
       margin: 5px
   }
@@ -39,7 +34,7 @@ export const Info = styled.div`
     border-radius: 5px;
     margin-top:10px
     
-    ${backgroundGradient}
+    ${secondaryBackgroundGradient}
     align-items:center;
     
     color:${textColor}

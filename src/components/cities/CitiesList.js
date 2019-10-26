@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { fetchLocationStart } from '../../redux/days-list/days-list.actions';
 
-import{ Container } from './cities-list.styles';
+import{ Container, City } from './cities-list.styles';
 
 const list = [
     {
@@ -52,7 +52,7 @@ const CitiesList = ({fetchLocationStart}) => {
                 list ?  
                 list.map((city, index) => {
                     return (
-                        <div key={index} onClick={() => fetchLocationStart({lat:city.lat,lon:city.lon})}>
+                        <City key={index} onClick={() => fetchLocationStart({lat:city.lat,lon:city.lon})}>
                             <h4>{city.subCity}</h4>
                             {
                                 index != 0 ?
@@ -62,7 +62,7 @@ const CitiesList = ({fetchLocationStart}) => {
                                 </> 
                             }
                             
-                        </div>
+                        </City>
                     )
                 })
                 : 

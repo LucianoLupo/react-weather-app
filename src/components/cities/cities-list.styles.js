@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { textColor, backgroundColor, primaryColor, backgroundGradient } from '../../stylesVariables'
+import { textColor } from '../../stylesVariables'
 
 
 export const Container = styled.div`
@@ -8,8 +8,15 @@ display: flex;
 flex-direction: row;
 justify-content:space-between;
 padding: 20px;
-border: 1px solid black;
-background-color: #c1c1c1;
+
+
+`;
+
+
+export const City = styled.div`
+cursor:pointer;
+padding: 10px;
+
 color:${textColor};
 
  p, h4 {
@@ -20,4 +27,4 @@ color:${textColor};
    font-size:12px
  }
 
-`;
+`
