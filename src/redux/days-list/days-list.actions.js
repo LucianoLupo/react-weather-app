@@ -2,8 +2,9 @@ import DaysListActionTypes from './days-list.types';
 
 
 
-export const fetchLocationStart = () => ({
-  type: DaysListActionTypes.FETCH_LOCATION_START
+export const fetchLocationStart = coords => ({
+  type: DaysListActionTypes.FETCH_LOCATION_START,
+  payload:coords
 });
 
 export const fetchLocationSuccess = location => ({

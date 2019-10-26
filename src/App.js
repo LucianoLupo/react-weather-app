@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import Today from './components/today/Today';
 import DaysList from './components/days-list/DaysList';
+import CitiesList from './components/cities/CitiesList'
 const App = () => {
 
   // const getData = () => axios.get('http://ip-api.com/json/').then((res) => {
@@ -24,6 +25,7 @@ const App = () => {
     <div>
       <Today/>
       <DaysList/>
+      <CitiesList/>
     </div>
   );
 }

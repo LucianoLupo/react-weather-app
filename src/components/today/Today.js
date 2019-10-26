@@ -18,7 +18,7 @@ const Today = ({selectedDay, location}) => {
         selectedDay && location ? 
         <Container>
             <Header>
-                <h1>{location.city} {location.regionName}</h1>
+                <h1>{selectedDay.city} {selectedDay.country}</h1>
                 <h3>{selectedDay.dayName}</h3>
                 <h3>{selectedDay.description}</h3>
             </Header>
