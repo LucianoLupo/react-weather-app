@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import { connect } from 'react-redux';
-import { Container, AppContainer } from './app.styles';
+import { Container, AppContainer, InfoLinks } from './app.styles';
 import Today from './components/today/Today';
 import DaysList from './components/days-list/DaysList';
 import CitiesList from './components/cities/CitiesList';
@@ -13,6 +13,10 @@ const App = ({ isFetchingWeather }) => {
 
   return (
     <AppContainer>
+      <InfoLinks>
+        <a href="https://lucianolupo.com" target="_blank">[lucianolupo.com]</a>
+        <a href="https://github.com/LucianoLupo/react-weather-app" target="_blank">[gitHub project]</a>
+      </InfoLinks>
       <Container>
         <Today/>
         <DaysList/>
