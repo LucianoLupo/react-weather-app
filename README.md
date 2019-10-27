@@ -8,6 +8,11 @@ you can see the demo [https://react-weather-app-1.netlify.com](here!)
 ## Available Scripts
 
 In the project directory, you can run:
+### `yarn install`
+
+Install all the dependencies needed
+
+and then:
 
 ### `yarn start`
 
