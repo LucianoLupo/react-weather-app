@@ -2,17 +2,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Loading from '../loading/Loading';
-import { FullPageContainer, Background } from './modal.styles';
 
-const Content = () => {
-    return(
-        <FullPageContainer>
-            <Background/>
-            <Loading/>
-        </FullPageContainer>
-    )
-}
+
 
 const Modal = ({children, onClose, open}) => {
     return (
@@ -20,7 +11,9 @@ const Modal = ({children, onClose, open}) => {
         <>
           {(
               ReactDOM.createPortal(
-                  <Content/>,
+                  <>
+                  {children}
+                  </> ,
               document.getElementById('modal')
               )
           )}

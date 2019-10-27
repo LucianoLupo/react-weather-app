@@ -43,6 +43,8 @@ export function* fetchWeatherStart() {
 export function* fetchWeatherAsync({payload}){
 
     const coords = payload
+    // esto de que la api quede expuesta es malo, lo correcto es tener un backend que maneje estas peticiones
+    // y envie al front la data  
     const apiKey ='e0842dbfe9f0e14cbc05dbde911d7bf7';
 
     try {

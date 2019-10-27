@@ -1,7 +1,7 @@
 
 
 import styled from 'styled-components';
-import { animated } from 'react-spring'
+import { animated } from 'react-spring';
 
 export const Block =  styled(animated.div)`
     width: 10px;
