@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import axios from 'axios';
 import { connect } from 'react-redux';
 import { Container, AppContainer, InfoLinks } from './app.styles';
 import Today from './components/today/Today';
@@ -10,6 +11,16 @@ import BlockPage from './components/block-page/BlockPage'
 import PopupHelp from './components/popup-help/PopupHelp'
 const App = ({ isFetchingWeather }) => {
   const isFetching = isFetchingWeather  
+
+  axios.post('/passData', {
+    data:"this is the data"
+  })
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
 
   return (
     <AppContainer>
