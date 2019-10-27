@@ -3,7 +3,6 @@ import moment from 'moment';
 
 
 export function returnListOfDays(data) {
-
         let today = new Date().getDate();
 
         let newList = []
@@ -23,13 +22,18 @@ export function returnListOfDays(data) {
                 pressure:null,
                 detailOnHours:[]
             }
+            console.log(data.list)
+
             data.list.forEach((hourInfo) => {
-                let date = new Date((hourInfo.dt - data.city.timezone) * 1000  ).getDate() ;
+                let date = new Date((hourInfo.dt - data.city.timezone) * 1000 - 1  ).getDate() ;
+                console.log(parseInt(date) , parseInt(moment(today, "DD-MM-YYYY").add('days', i).format('DD')))
                 if (parseInt(date) === parseInt(moment(today, "DD-MM-YYYY").add('days', i).format('DD')) ) {
                     hourInfo.dt_onTimeZome = new Date((hourInfo.dt - data.city.timezone) * 1000  ) 
                     newList[i].detailOnHours.push(hourInfo)
                 }
             })
+            console.log(newList)
+
 
             let hourOfDay = new Date(newList[0].detailOnHours[0].dt_onTimeZome).getHours()
             newList = newList.map((day) => {
@@ -38,6 +42,7 @@ export function returnListOfDays(data) {
                 day.detailOnHours.forEach((detail) => {
                     min.push(detail.main.temp_min / 10);
                     max.push(detail.main.temp_max / 10);
+                    
                     if (new Date(detail.dt_onTimeZome).getHours() === hourOfDay) {
                         day.iconWeather = detail.weather[0].icon
                         day.iconWeatherSrc = `http://openweathermap.org/img/wn/${detail.weather[0].icon}@2x.png`

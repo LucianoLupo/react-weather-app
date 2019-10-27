@@ -16,7 +16,7 @@ const CitiesList = ({fetchLocationStart}) => {
                         <City key={index} onClick={() => fetchLocationStart({lat:city.lat,lon:city.lon})}>
                             <h4>{city.subCity}</h4>
                             {
-                                index != 0 ?
+                                index !== 0 ?
                                 <p>({city.city})</p>
                                 :
                                 <>
