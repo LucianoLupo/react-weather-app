@@ -26,7 +26,6 @@ export function returnListOfDays(data) {
             data.list.forEach((hourInfo) => {
                 let date = new Date(hourInfo.dt * 1000 ).getDate() ;
                 if (parseInt(date) === parseInt(moment(today, "DD-MM-YYYY").add('days', i).format('DD')) ) {
-                    console.log("-->")
                     hourInfo.dt_onTimeZome = new Date(hourInfo.dt * 1000  ) 
                     newList[i].detailOnHours.push(hourInfo)
                 }

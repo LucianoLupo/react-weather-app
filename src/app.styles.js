@@ -12,6 +12,10 @@ export const AppContainer = styled.div`
     align-items:center;
     justify-content: center;
 
+    a{
+        margin:10px
+    }
+
 `
 
 export const Container = styled.div`
@@ -20,4 +24,13 @@ export const Container = styled.div`
     background: ${backgroundColor};
     ${primaryBackgroundGradient}
     ${boxShadow}
+`
+
+
+export const InfoLinks = styled.div`
+    position:fixed;
+    width:100%
+    top:0;
+    display:flex;
+    justify-content:space-between;
 `
