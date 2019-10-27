@@ -16,7 +16,7 @@ const Day = ({day, selectDay}) => {
                     <h4>{day.max}</h4>
                 </MaxMin>
                 <MaxMin>
-                    <p>min:</p>
+                    <p>min:</p> 
                     <h4>{day.min}</h4>
                 </MaxMin>
             </MaxMinContainer>

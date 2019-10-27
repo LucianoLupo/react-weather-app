@@ -22,17 +22,14 @@ export function returnListOfDays(data) {
                 pressure:null,
                 detailOnHours:[]
             }
-            console.log(data.list)
 
             data.list.forEach((hourInfo) => {
-                let date = new Date((hourInfo.dt - data.city.timezone) * 1000 - 1  ).getDate() ;
-                console.log(parseInt(date) , parseInt(moment(today, "DD-MM-YYYY").add('days', i).format('DD')))
+                let date = new Date(hourInfo.dt * 1000 - 1  ).getDate() ;
                 if (parseInt(date) === parseInt(moment(today, "DD-MM-YYYY").add('days', i).format('DD')) ) {
-                    hourInfo.dt_onTimeZome = new Date((hourInfo.dt - data.city.timezone) * 1000  ) 
+                    hourInfo.dt_onTimeZome = new Date(hourInfo.dt * 1000  ) 
                     newList[i].detailOnHours.push(hourInfo)
                 }
             })
-            console.log(newList)
 
 
             let hourOfDay = new Date(newList[0].detailOnHours[0].dt_onTimeZome).getHours()

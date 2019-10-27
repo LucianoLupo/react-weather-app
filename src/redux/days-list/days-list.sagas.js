@@ -7,7 +7,7 @@ import DayActionTypes from './days-list.types';
 
 
 export function* fetchLocationAsync( {payload} ){
-    try {
+    try { 
         const data = yield axios.get('http://ip-api.com/json/');
         let coords;
         if ( !payload || !payload.lat || !payload.lon ){    
@@ -46,7 +46,7 @@ export function* fetchWeatherAsync({payload}){
     const apiKey ='e0842dbfe9f0e14cbc05dbde911d7bf7';
 
     try {
-        const nextFiveDays = yield axios.get(`http://api.openweathermap.org/data/2.5/forecast?lat=${coords.lat}&lon=${coords.lon}&appid=${apiKey}`);
+        const nextFiveDays = yield axios.get(`https://api.openweathermap.org/data/2.5/forecast?lat=${coords.lat}&lon=${coords.lon}&appid=${apiKey}`);
         let cleanedList = returnListOfDays(nextFiveDays.data)
 
         yield put(fetchWeatherSuccess(cleanedList));
