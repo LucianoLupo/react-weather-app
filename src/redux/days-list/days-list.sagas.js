@@ -8,17 +8,23 @@ import DayActionTypes from './days-list.types';
 
 export function* fetchLocationAsync( {payload} ){
     try { 
-        const data = yield axios.get('http://ip-api.com/json/');
+
+        // No uso esta api porque no tiene SSL Free !
+        // const data = yield axios.get('http://ip-api.com/json/');
+        
+        const ip = yield axios.get('https://api.ipify.org');
+        const dataOfIp = yield axios.get(`https://ipapi.co/${ip.data}/json/`);
+
         let coords;
         if ( !payload || !payload.lat || !payload.lon ){    
             coords = {
-                lat:data.data.lat,
-                lon:data.data.lon
+                lat:dataOfIp.data.latitude,
+                lon:dataOfIp.data.longitude
             }
         } else {
             coords = payload
         }
-        yield put(fetchLocationSuccess(data.data));
+        yield put(fetchLocationSuccess(dataOfIp.data));
         yield put(fetchWeatherStartCall(coords))
 
     } catch (error) {
