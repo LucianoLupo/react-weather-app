@@ -24,10 +24,7 @@ const App = ({ isFetchingWeather }) => {
         <Modal open={isFetching} >
           <BlockPage/>
         </Modal>
-        {/* <Modal open={isFetching} >
-          <BlockPage/>
-        </Modal> */}
-        <PopupHelp/>
+        {/* <PopupHelp/> */}
       </Container>
     </AppContainer>
 
