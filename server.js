@@ -43,7 +43,7 @@ app.post('/passCoords', (req, res) => {
         res.status(200).send({ data: resp.data });
       })
       .catch(err => {
-        res.status(500).send({ error:"error message" })
+        res.status(500).send({ error:"error message:", err })
       })
 
 });

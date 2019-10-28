@@ -46,6 +46,8 @@ yarn-error.log*
 
 
 .env
+app.yaml
+.env.yaml
 
 /client/npm-debug.log*
 /client/yarn-debug.log*
