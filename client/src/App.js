@@ -12,16 +12,6 @@ import PopupHelp from './components/popup-help/PopupHelp'
 const App = ({ isFetchingWeather }) => {
   const isFetching = isFetchingWeather  
 
-  axios.post('/passData', {
-    data:"this is the data"
-  })
-  .then(function (response) {
-    console.log(response);
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
-
   return (
     <AppContainer>
       <InfoLinks>
@@ -35,10 +25,7 @@ const App = ({ isFetchingWeather }) => {
         <Modal open={isFetching} >
           <BlockPage/>
         </Modal>
-        {/* <Modal open={isFetching} >
-          <BlockPage/>
-        </Modal> */}
-        <PopupHelp/>
+        {/* <PopupHelp/> */}
       </Container>
     </AppContainer>
 

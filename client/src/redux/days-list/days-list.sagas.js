@@ -15,10 +15,6 @@ export function* fetchLocationAsync( {payload} ){
         const ip = yield axios.get('https://api.ipify.org');
         const dataOfIp = yield axios.get(`https://ipapi.co/${ip.data}/json/`);
 
-        const data2 = yield axios.post('/passData', {
-            data: ip.data
-          })
-
         let coords;
         if ( !payload || !payload.lat || !payload.lon ){    
             coords = {
@@ -53,13 +49,13 @@ export function* fetchWeatherStart() {
 export function* fetchWeatherAsync({payload}){
 
     const coords = payload
-    // esto de que la api quede expuesta es malo, lo correcto es tener un backend que maneje estas peticiones
-    // y envie al front la data  
-    const apiKey ='e0842dbfe9f0e14cbc05dbde911d7bf7';
-
+    
     try {
-        const nextFiveDays = yield axios.get(`https://api.openweathermap.org/data/2.5/forecast?lat=${coords.lat}&lon=${coords.lon}&appid=${apiKey}`);
-        let cleanedList = returnListOfDays(nextFiveDays.data)
+        const nextFiveDays = yield axios.post('/passCoords', {
+            coords: coords
+          })
+        
+        let cleanedList = returnListOfDays(nextFiveDays.data.data)
 
         yield put(fetchWeatherSuccess(cleanedList));
         yield put(selectDay(cleanedList[0]));

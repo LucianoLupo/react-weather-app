@@ -3,6 +3,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const path = require('path');
 const enforce = require('express-sslify');
+const axios = require('axios');
 
 if (process.env.NODE_ENV !== 'production') require('dotenv').config();
 
@@ -31,9 +32,20 @@ app.get('/service-worker.js', (req, res) => {
   res.sendFile(path.resolve(__dirname, '..', 'build', 'service-worker.js'));
 });
 
-app.post('/passData', (req, res) => {
+const apiKey = process.env.WEATHER_KEY ;
+
+app.post('/passCoords', (req, res) => {
     
-  res.status(200).send({ data: req.body.data });
-  res.status(500).send({ error:"error message" })
+  console.log("--->",req.body)
+        
+      axios.get(`https://api.openweathermap.org/data/2.5/forecast?lat=${req.body.coords.lat}&lon=${req.body.coords.lon}&appid=${apiKey}`)
+      .then(resp => {
+        res.status(200).send({ data: resp.data });
+      })
+      .catch(err => {
+        res.status(500).send({ error:"error message" })
+      })
 
 });
+  
+
